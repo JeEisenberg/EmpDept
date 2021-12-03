@@ -11,8 +11,9 @@
 
 
     <modules>
-        <module>Multi_Table_Search</module>
+
         <module>ActiveSearch</module>
+        <module>mapperDemo</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

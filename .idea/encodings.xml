@@ -3,9 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ActiveSearch" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Multi_Table_Search" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Multi_Table_Search/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Multi_Table_Search/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mapperDemo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
