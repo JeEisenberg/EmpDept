@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gavin.mapper.EmpMapper">
+
+    <resultMap id="empDeptRef" type="emp">
+        <id column="empno" property="empno"/><!--主键列-->
+<!--                                                 column对用数据库表中的列,property代表实体类中的属性-->
+        <result column="ename" property="ename"/>
+        <result column="job" property="job"/>
+        <result column="mgr" property="mgr"/>
+        <result column="hiredate" property="hiredate"/>
+        <result column="sal" property="sal"/>
+        <result column="comm" property="comm"/>
+        <!--最后一个属性是dept类型的    javaType 是对应的java类型-->
+
+        <association property="dept" javaType="Dept">
+            <id  column="deptno" property="deptno"/>
+            <result column="dname" property="dname"/>
+            <result column="loc" property="loc"/>
+
+        </association>
+
+    </resultMap>
+
+
+    <sql id="partColumn">e.*,d.*</sql>
+    <select id="findAll" resultMap="empDeptRef">
+
+
+        select
+        <include refid="partColumn"/>
+        from emp e inner join dept d on e.deptno = d .deptno
+
+
+    </select>
+
+</mapper>
