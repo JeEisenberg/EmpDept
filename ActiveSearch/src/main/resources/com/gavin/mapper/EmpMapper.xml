@@ -24,12 +24,12 @@
 
 
     <sql id="partColumn">e.*,d.*</sql>
-    <select id="findAll" resultMap="empDeptRef">
+    <select id="findAllEmp" resultMap="empDeptRef">
 
 
         select
         <include refid="partColumn"/>
-        from emp e inner join dept d on e.deptno = d .deptno
+        from dept d inner join emp e on d.DEPTNO = e.DEPTNO
 
 
     </select>

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,6 +24,8 @@ public class Emp {
     private Integer sal;
 
     private Integer comm;
+
+    private Integer deptno;
 
     private Dept dept;
 

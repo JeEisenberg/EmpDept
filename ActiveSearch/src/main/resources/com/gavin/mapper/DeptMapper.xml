@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gavin.mapper.DeptMapper">
+    <resultMap id="deptRef" type="Dept">
+        <id column="deptno" property="deptno"/>
+        <result column="dname" property="dname"/>
+        <result column="loc" property="loc"/>
 
+        <collection property="emp" ofType="Emp">
+            <id column="empno" property="empno"/>
+            <result column="ename" property="ename"/>
+            <result column="job" property="job"/>
+            <result column="mgr" property="mgr"/>
+            <result column="hiredate" property="hiredate"/>
+            <result column="sal" property="sal"/>
+            <result column="comm" property="comm"/>
+            <result column="deptno" property="deptno"/>
+        </collection>
+    </resultMap>
+    <sql id="partColumn">e.*,d.*</sql>
+    <select id="findDeptById" resultMap="deptRef" parameterType="int">
+
+        select
+        <include refid="partColumn"/>
+        from emp e inner join dept d on e.deptno = d .deptno
+        <where>
+            e.deptno =#{id}
+        </where>
+    </select>
 </mapper>
