@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gavin.mapper.UserInfoMapper">
+    <resultMap id="userRef"    type="userInfo">
+
+    <!--        用户表-->
+    <id property="uid" column="uid"/>
+    <result property="uname" column="uname"/>
+    <result property="upwd" column="upwd"/>
+
+
+    <!--订单表-->
+    <collection property="orderInfo" ofType="orderInfo">
+        <id column="oid" property="oid"/>
+        <result column="ordernum" property="ordernum"/>
+        <result column="userid" property="userid"/>
+        <!--订单信息表-->
+        <collection property="ordersdetail" ofType="ordersDetail">
+            <id column="odid" property="odid"/>
+            <result column="orderid" property="orderid"/>
+            <result column="productid" property="productid"/>
+
+            <collection property="products" ofType="product">
+                <id property="pid" column="pid"/>
+                <result property="pname" column="pname"/>
+                <result property="price" column="price"/>
+            </collection>
+        </collection>
+    </collection>
+
+</resultMap>
+
+
+    <select id="findUserOrder"   resultMap="userRef" parameterType="int">
+
+        SELECT
+        u.*,
+
+        o.*,
+
+        od.*,
+
+        p.*
+
+        FROM
+        userinfo u
+    inner JOIN orderinfo o ON u.uid = o.userid
+        inner   JOIN ordersdetail od ON o.oid = od.orderid
+        inner   JOIN product p ON od.productid = p.pid
+
+
+
+        <where>
+            u.uid = #{uid}
+        </where>
+
+
+    </select>
+</mapper>
